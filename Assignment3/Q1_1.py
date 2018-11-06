@@ -34,7 +34,12 @@ def tenCrossVali(posCorpus, negCorpus):
     
     clf = MultinomialNB(alpha=1.0)
     
-    scorces = cross_validate(clf, X, y, cv=10, scoring='accuracy')
+    print('========Accuracy=========')
+    scorces1 = cross_validate(clf, X, y, cv=10, scoring='accuracy')
+    print(scorces1)
+    print('===========F1============')
+    scorces2 = cross_validate(clf, X, y, cv=10, scoring='f1_macro')
+    print(scorces2)
 
 
 with open('CR/txt/pos.tok') as posFile:
