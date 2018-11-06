@@ -8,7 +8,7 @@ Created on Mon Nov  5 22:24:31 2018
 
 
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.naive_bayes import MultinomialNB
+from sklearn.linear_model import LogisticRegression
 
 from sklearn.model_selection import cross_validate
 
@@ -36,13 +36,13 @@ def tenCrossVali(posCorpus, negCorpus):
     model = vectorizer.fit_transform(Corpus)
     X = model.toarray()
     
-    clf = MultinomialNB(alpha=1.0)
+    log = LogisticRegression(penalty='l2')
     
     print('========Accuracy=========')
-    scorces1 = cross_validate(clf, X, y, cv=10, scoring='accuracy')
+    scorces1 = cross_validate(log, X, y, cv=10, scoring='accuracy')
     print(scorces1)
     print('===========F1============')
-    scorces2 = cross_validate(clf, X, y, cv=10, scoring='f1_macro')
+    scorces2 = cross_validate(log, X, y, cv=10, scoring='f1_macro')
     print(scorces2)
 
 
